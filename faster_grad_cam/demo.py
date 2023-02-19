@@ -5,21 +5,22 @@ import numpy as np
 from sklearn.cluster import KMeans
 from sklearn.externals import joblib
 
+
 try:
     from tflite_runtime.interpreter import Interpreter
 except:
     from tensorflow.lite.python.interpreter import Interpreter
 
-model_path = "model/" 
+model_path = os.path.join(os.path.dirname(__file__), "model")
 
 if os.path.exists(model_path):
     # load csv 
     print("csv loading...")
-    channel_weight = np.loadtxt(model_path + "channel_weight.csv", delimiter=",")
-    channel_adress = np.loadtxt(model_path + "channel_adress.csv", delimiter=",", dtype="float")
+    channel_weight = np.loadtxt(os.path.join(model_path, "channel_weight.csv"), delimiter=",")
+    channel_adress = np.loadtxt(os.path.join(model_path, "channel_adress.csv"), delimiter=",", dtype="float")
     channel_adress = channel_adress.astype(np.int)
-    vector_pa = np.loadtxt(model_path + "vector_pa.csv", delimiter=",")
-    kmeans = joblib.load(model_path + "k-means.pkl.cmp")
+    vector_pa = np.loadtxt(os.path.join(model_path, "vector_pa.csv"), delimiter=",")
+    kmeans = joblib.load(os.path.join(model_path, "k-means.pkl.cmp"))
 
 else:
     print("Nothing model folder")
@@ -71,7 +72,7 @@ def bounding_box(img, x_min, y_min, x_max, y_max):
     img = cv2.rectangle(img, (x_min, y_min), (x_max, y_max), (0, 255, 0), 5)
     return img
 
-def main():
+def run():
     camera_width =  352
     camera_height = 288
     input_size = 96
@@ -90,7 +91,7 @@ def main():
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, camera_width)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, camera_height)
 
-    interpreter = Interpreter(model_path=model_path + "weights_weight_quant.tflite")
+    interpreter = Interpreter(model_path=os.path.join(model_path, "weights_weight_quant.tflite"))
     try:
         interpreter.set_num_threads(4)
     except:
@@ -199,9 +200,7 @@ def main():
         cv2.imshow("Result", image)
         cv2.waitKey(0)
 
-
-
     cv2.destroyAllWindows()
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+#     main()
