@@ -17,8 +17,9 @@ Or you can download whl to install in release page.
 
 If you want to build from source, you can do that as follows:
 ```
-conda create -n faster_grad_cam python=3.8 build
+conda create -n faster_grad_cam python=3.8
 conda activate -n faster_grad_cam
+pip install build
 git clone https://github.com/guozhenyu2zj/Faster_Grad_Cam_Package
 cd Faster_Grad_Cam_Package
 python -m build
