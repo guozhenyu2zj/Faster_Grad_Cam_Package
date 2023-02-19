@@ -159,9 +159,11 @@ def run():
             else:
                 like_OD = True
     else:
+
+        image_path = os.path.join(os.path.dirname(__file__), "test.jpg")
         t1 = time.time()
 
-        image = cv2.imread("test.jpg")
+        image = cv2.imread(image_path)
         image = image[:352,262:550]
 
         img = cv2.resize(image, (input_size, input_size))
