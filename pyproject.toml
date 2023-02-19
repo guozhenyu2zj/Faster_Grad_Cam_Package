@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "faster-grad-cam"
+version = "0.1.0"
+description = ""
+authors = ["guozhenyu2zj <guozhenyu2zj@gmail.com>"]
+readme = "README.md"
+packages = [{include = "faster_grad_cam"}]
+
+[tool.poetry.dependencies]
+python = ">=3.8,<3.12"
+scikit-learn = "0.22"
+numpy = "1.23"
+opencv-python = "^4.7.0.68"
+tensorflow = "^2.11.0"
+
+
+[[tool.poetry.source]]
+name = "mirrors"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
+default = true
+secondary = false
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+faster_grad_cam = "faster_grad_cam.demo:run"
