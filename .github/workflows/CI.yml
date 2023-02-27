@@ -29,8 +29,3 @@ jobs:
         run: poetry install --no-root --no-dev
       - name: Build distribution package
         run: poetry build
-      - name: Upload distribution package
-        uses: actions/upload-artifact@v3
-        with:
-          name: distribution-package
-          path: dist/*
