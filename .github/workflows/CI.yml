@@ -40,7 +40,6 @@ jobs:
         run: |
           poetry build
       - uses: actions/upload-artifact@v3
-      - name: upload package
         with:
-          name: my-artifact
+          name: upload package
           path: dist/
