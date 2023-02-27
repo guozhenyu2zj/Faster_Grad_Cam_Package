@@ -1,17 +1,13 @@
 name: CI
 
-on:
-  push:
-    branches: [ "main" ]
+on: [push]
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
+      - name: Set up Python 3.8
         uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
       - name: Install dependencies
         run: pip install poetry && poetry install --no-root
       - name: Run tests
@@ -21,10 +17,8 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python
+      - name: Set up Python 3.8
         uses: actions/setup-python@v3
-        with:
-          python-version: 3.8
       - name: Install dependencies
         run: poetry install --no-root --no-dev
       - name: Build distribution package
