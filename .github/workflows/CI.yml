@@ -19,7 +19,7 @@ jobs:
           poetry install --no-root
       - name: Run tests
         run: |
-          pytest ./tests/test.py
+          poetry run pytest ./tests/test.py
   build:
     timeout-minutes: 600
     runs-on: ubuntu-latest
