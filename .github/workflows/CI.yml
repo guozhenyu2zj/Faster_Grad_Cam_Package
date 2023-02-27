@@ -39,3 +39,8 @@ jobs:
       - name: Build distribution package
         run: |
           poetry build
+      - name: upload package
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: dist/
