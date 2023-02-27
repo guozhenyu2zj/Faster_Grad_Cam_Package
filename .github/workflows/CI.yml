@@ -3,6 +3,7 @@ name: CI
 on: [push]
 jobs:
   test:
+    timeout-minutes: 600
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,6 +21,7 @@ jobs:
         run: |
           pytest ./tests/test.py
   build:
+    timeout-minutes: 600
     runs-on: ubuntu-latest
     needs: test
     steps:
