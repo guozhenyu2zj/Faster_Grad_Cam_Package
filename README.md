@@ -17,6 +17,16 @@ Then install pre-commit hook with flake8 and black:
 pre-commit install
 ```
 
+## Deploy by docker
+If you just want to use the demo, you can deploy it by docker:
+```
+docker run -dp 8501:8501 ahahaha2333/faster_grad_cam:v6.0
+```
+Then you can use the demo by web ui:
+```
+localhost:8501
+```
+
 
 ## Contributing
 
