@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-import faster_grad_cam.grad_cam as FasterGradCam
+from faster_grad_cam.grad_cam import FasterGradCam
 
 fgc = FasterGradCam()
 
