@@ -1,7 +1,8 @@
 import pytest
 import numpy as np
-import faster_grad_cam.demo as fgc
+import faster_grad_cam.grad_cam as FasterGradCam
 
+fgc = FasterGradCam()
 
 def test_process_image():
     '''

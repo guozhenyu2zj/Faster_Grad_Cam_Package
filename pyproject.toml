@@ -23,6 +23,3 @@ streamlit-webrtc = "^0.45.0"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.scripts]
-faster_grad_cam = "streamlit run home.py"
