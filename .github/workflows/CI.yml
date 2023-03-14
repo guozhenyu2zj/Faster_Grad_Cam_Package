@@ -8,9 +8,12 @@ jobs:
     container: ahahaha2333/faster_grad_cam:v4.0
     steps:
       - uses: actions/checkout@v3
+      - name: install pytest
+        run: |
+          poetry add pytest
       - name: Run tests
         run: |
-          poetry env list
+          poetry run pytest ./tests/test.py
   build:
     timeout-minutes: 600
     runs-on: ubuntu-latest
