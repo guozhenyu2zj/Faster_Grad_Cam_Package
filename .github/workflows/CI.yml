@@ -5,18 +5,9 @@ jobs:
   test:
     timeout-minutes: 600
     runs-on: ubuntu-latest
+    container: ahahaha2333/faster_grad_cam:v3.0
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.8'
-      - name: Install poetry
-        run: |
-          pip install poetry
-      - name: Install dependencies
-        run: |
-          poetry install --no-root
       - name: Run tests
         run: |
           poetry run pytest ./tests/test.py
@@ -26,16 +17,6 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Python 3.8
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.8'
-      - name: Install poetry
-        run: |
-          pip install poetry
-      - name: Install dependencies
-        run: |
-          poetry install --no-root --no-dev
       - name: Build distribution package
         run: |
           poetry build
